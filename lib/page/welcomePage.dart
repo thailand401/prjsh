@@ -40,23 +40,40 @@ class _WelcomePage extends State<WelcomePage>
           body: Center(
             child: Column(
               children: <Widget>[
-                AvatarGlow(
-                  endRadius: 90,
-                  duration: Duration(seconds: 2),
-                  glowColor: Colors.white24,
-                  repeat: true,
-                  repeatPauseDuration: Duration(seconds: 2),
-                  startDelay: Duration(seconds: 1),
-                  child: Material(
-                      elevation: 8.0,
-                      shape: CircleBorder(),
-                      child: CircleAvatar(
-                        backgroundColor: Colors.grey[100],
-                        child: FlutterLogo(
-                          size: 50.0,
+                new ClipPath(
+                  clipper: MyClipper(),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      image: new DecorationImage(
+                        image: AssetImage('assets/resource/logo.png'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.only(top: 0.0, bottom: 0.0),
+                    child: Column(
+                      children: <Widget>[
+                        AvatarGlow(
+                          endRadius: 90,
+                          duration: Duration(seconds: 2),
+                          glowColor: Colors.white24,
+                          repeat: true,
+                          repeatPauseDuration: Duration(seconds: 2),
+                          startDelay: Duration(seconds: 1),
+                          child: Material(
+                              elevation: 8.0,
+                              shape: CircleBorder(),
+                              child: CircleAvatar(
+                                backgroundColor: Colors.grey[100],
+                                child: FlutterLogo(
+                                  size: 50.0,
+                                ),
+                                radius: 50.0,
+                              )),
                         ),
-                        radius: 50.0,
-                      )),
+                      ],
+                    ),
+                  ),
                 ),
                 DelayedAnimation(
                   child: Text(
@@ -167,5 +184,27 @@ class _WelcomePage extends State<WelcomePage>
 
   void _onTapUp(TapUpDetails details) {
     _controller.reverse();
+  }
+}
+
+class MyClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path p = new Path();
+    p.lineTo(size.width, 0.0);
+    p.lineTo(size.width, size.height * 0.85);
+    p.arcToPoint(
+      Offset(0.0, size.height * 0.85),
+      radius: const Radius.elliptical(50.0, 10.0),
+      rotation: 0.0,
+    );
+    p.lineTo(0.0, 0.0);
+    p.close();
+    return p;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper oldClipper) {
+    return true;
   }
 }
