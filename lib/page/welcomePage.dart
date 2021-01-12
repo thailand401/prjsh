@@ -36,7 +36,7 @@ class _WelcomePage extends State<WelcomePage>
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          backgroundColor: Color(0xFF8185E2),
+          backgroundColor: Colors.black,
           body: Center(
             child: Column(
               children: <Widget>[
@@ -45,7 +45,7 @@ class _WelcomePage extends State<WelcomePage>
                   child: Container(
                     decoration: BoxDecoration(
                       image: new DecorationImage(
-                        image: AssetImage('assets/resource/logo.png'),
+                        image: AssetImage('assets/resource/art.png'),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -65,8 +65,10 @@ class _WelcomePage extends State<WelcomePage>
                               shape: CircleBorder(),
                               child: CircleAvatar(
                                 backgroundColor: Colors.grey[100],
-                                child: FlutterLogo(
-                                  size: 50.0,
+                                child: Image(
+                                  image: AssetImage(
+                                      'assets/resource/icon_owl.png'),
+                                  width: 50,
                                 ),
                                 radius: 50.0,
                               )),
