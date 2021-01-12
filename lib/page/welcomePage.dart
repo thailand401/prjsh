@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prjsh/config/configuration.dart';
 import 'package:prjsh/components/delayedAnimation.dart';
+import 'package:prjsh/page/loginPage.dart';
 
 class WelcomePage extends StatefulWidget {
   @override
@@ -31,7 +33,7 @@ class _WelcomePage extends State<WelcomePage>
 
   @override
   Widget build(BuildContext context) {
-    final color = Colors.white;
+    final color = Config.primaryText;
     _scale = 1 - _controller.value;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -120,7 +122,6 @@ class _WelcomePage extends State<WelcomePage>
                 DelayedAnimation(
                   child: GestureDetector(
                     onTapDown: _onTapDown,
-                    onTapUp: _onTapUp,
                     child: Transform.scale(
                       scale: _scale,
                       child: _animatedButtonUI,
@@ -143,21 +144,7 @@ class _WelcomePage extends State<WelcomePage>
                 ),
               ],
             ),
-          )
-          //  Column(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   children: <Widget>[
-          //     Text('Tap on the Below Button',style: TextStyle(color: Colors.grey[400],fontSize: 20.0),),
-          //     SizedBox(
-          //       height: 20.0,
-          //     ),
-          //      Center(
-
-          //   ),
-          //   ],
-
-          // ),
-          ),
+          )),
     );
   }
 
@@ -181,32 +168,7 @@ class _WelcomePage extends State<WelcomePage>
       );
 
   void _onTapDown(TapDownDetails details) {
-    _controller.forward();
-  }
-
-  void _onTapUp(TapUpDetails details) {
-    _controller.reverse();
-  }
-}
-
-class MyClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path p = new Path();
-    p.lineTo(size.width, 0.0);
-    p.lineTo(size.width, size.height * 0.85);
-    p.arcToPoint(
-      Offset(0.0, size.height * 0.85),
-      radius: const Radius.elliptical(50.0, 10.0),
-      rotation: 0.0,
-    );
-    p.lineTo(0.0, 0.0);
-    p.close();
-    return p;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper oldClipper) {
-    return true;
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => LoginPage()));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prjsh/page/welcomePage.dart';
+import 'package:prjsh/config/configuration.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(MyApp());
