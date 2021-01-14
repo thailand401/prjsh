@@ -3,14 +3,33 @@ import 'package:flutter/material.dart';
 //Color(0xffdf8e33).withAlpha(100) 8938aa 1f0327
 class Config {
   static Color mainColor = Colors.black;
-  static Color primaryBg1 = Color(0xff200033);
-  static Color primaryBg2 = Color(0xff13001f);
-  static Color primaryBt1 = Color(0xff8d3aaf);
-  static Color primaryBt2 = Color(0xff662182);
-  static Color primaryText = Color(0xfffbf1ff);
-  static Color submaryText = Color(0xffdbd2df);
-  static Color primaryIcon = Color(0xff8d3aaf);
-  static Color submaryBorder = Color(0xff8d3aaf);
+  static Color mainBg1 = Color(0xffffffff);
+  static Color mainBg2 = Color(0xffede7f6);
+  static Color mainText = Color(0xff010101);
+  static Color mainSubText = Color(0xff212121);
+  static Color mainShadow = Colors.black38;
+
+  Color primaryBg1 = Color(0xff200033);
+  Color primaryBg2 = Color(0xff13001f);
+  Color primaryBt1 = Color(0xff8d3aaf);
+  Color primaryBt2 = Color(0xff662182);
+  Color primaryText = Color(0xfffbf1ff);
+  Color submaryText = Color(0xffdbd2df);
+  Color primaryIcon = Color(0xff8d3aaf);
+  Color submaryBorder = Color(0xff8d3aaf);
+  Color primaryShadow = Colors.white24;
+
+  Config() {
+    int mode = 1;
+    if (mode == 1) {
+      this.primaryBg1 = mainBg1;
+      this.primaryBg2 = mainBg2;
+      this.primaryText = mainText;
+      this.submaryText = mainSubText;
+      this.primaryShadow = mainShadow;
+      print(this.submaryText);
+    }
+  }
 }
 
 class MyClipper extends CustomClipper<Path> {

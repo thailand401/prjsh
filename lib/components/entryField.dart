@@ -3,6 +3,7 @@ import 'package:prjsh/config/configuration.dart';
 
 class EntryField {
   static Widget create(String title, {bool isPassword = false}) {
+    Config _cf = Config();
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -11,7 +12,7 @@ class EntryField {
           Text(
             title,
             style: TextStyle(
-                color: Config.primaryText,
+                color: _cf.primaryText,
                 fontWeight: FontWeight.bold,
                 fontSize: 15),
           ),
@@ -22,13 +23,13 @@ class EntryField {
               obscureText: isPassword,
               decoration: InputDecoration(
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+                  borderSide: BorderSide(color: _cf.primaryText),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+                  borderSide: BorderSide(color: Colors.blue[800]),
                 ),
                 border: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+                  borderSide: BorderSide(color: _cf.primaryText),
                 ),
               ))
         ],

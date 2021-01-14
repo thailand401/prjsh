@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:prjsh/config/configuration.dart';
 
 class Common {
+  static Config _cf = Config();
   static Widget cmdivider() {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -15,20 +16,20 @@ class Common {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Divider(
-                color: Config.primaryText,
+                color: _cf.primaryText,
                 thickness: 1,
               ),
             ),
           ),
           Text(
             'or',
-            style: TextStyle(color: Config.primaryText),
+            style: TextStyle(color: _cf.primaryText),
           ),
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Divider(
-                color: Config.primaryText,
+                color: _cf.primaryText,
                 thickness: 1,
               ),
             ),
@@ -61,7 +62,7 @@ class Common {
           gradient: LinearGradient(
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
-              colors: [Config.primaryBt1, Config.primaryBt2])),
+              colors: [_cf.primaryBt1, _cf.primaryBt2])),
       child: Text(
         _title,
         style: TextStyle(fontSize: 20, color: Colors.white),

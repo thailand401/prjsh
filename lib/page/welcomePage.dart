@@ -16,6 +16,7 @@ class _WelcomePage extends State<WelcomePage>
   final int delayedAmount = 500;
   double _scale;
   AnimationController _controller;
+  Config _cf = Config();
   @override
   void initState() {
     _controller = AnimationController(
@@ -33,7 +34,7 @@ class _WelcomePage extends State<WelcomePage>
 
   @override
   Widget build(BuildContext context) {
-    final color = Config.primaryText;
+    final color = _cf.primaryText;
     _scale = 1 - _controller.value;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -52,7 +53,7 @@ class _WelcomePage extends State<WelcomePage>
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Config.primaryBg1, Config.primaryBg2])),
+                  colors: [_cf.primaryBg1, _cf.primaryBg2])),
           child: Center(
             child: Column(
               children: <Widget>[
@@ -72,7 +73,7 @@ class _WelcomePage extends State<WelcomePage>
                         AvatarGlow(
                           endRadius: 90,
                           duration: Duration(seconds: 2),
-                          glowColor: Colors.white24,
+                          glowColor: _cf.primaryShadow,
                           repeat: true,
                           repeatPauseDuration: Duration(seconds: 2),
                           startDelay: Duration(seconds: 1),

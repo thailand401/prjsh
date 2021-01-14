@@ -17,6 +17,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  Config _cf = Config();
+
   Widget _backButton(BuildContext context) {
     return Common.cmback(context);
   }
@@ -60,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
             Text(
               'Don\'t have an account ?',
               style: TextStyle(
-                  color: Config.primaryText,
+                  color: _cf.primaryText,
                   fontSize: 13,
                   fontWeight: FontWeight.w600),
             ),
@@ -146,35 +148,64 @@ class _LoginPageState extends State<LoginPage> {
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [Config.primaryBg1, Config.primaryBg2])),
+                colors: [_cf.primaryBg1, _cf.primaryBg2])),
         child: Stack(
           children: <Widget>[
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    _mainHeader(),
-                    SizedBox(height: 50),
-                    _formWidget1(),
-                    SizedBox(height: 20),
-                    InkWell(
-                        onTap: onSubmit,
-                        child: Common.cmbutton('Submit', 0, context)),
-                    Container(
-                      padding: EdgeInsets.symmetric(vertical: 10),
-                      alignment: Alignment.centerRight,
-                      child: Text('Forgot Password ?',
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w500)),
-                    ),
-                    Common.cmdivider(),
-                    _facebookButton(),
-                    SizedBox(height: height * .055),
-                    _createAccountLabel(),
-                  ],
+            new ClipPath(
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                decoration: BoxDecoration(
+                  image: new DecorationImage(
+                    image: AssetImage('assets/resource/bloom.png'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                alignment: Alignment.center,
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      AvatarGlow(
+                        endRadius: 90,
+                        duration: Duration(seconds: 2),
+                        glowColor: _cf.primaryShadow,
+                        repeat: true,
+                        repeatPauseDuration: Duration(seconds: 2),
+                        startDelay: Duration(seconds: 1),
+                        child: Material(
+                            elevation: 8.0,
+                            shape: CircleBorder(),
+                            child: CircleAvatar(
+                              backgroundColor: Colors.grey[100],
+                              child: Image(
+                                image:
+                                    AssetImage('assets/resource/icon_owl.png'),
+                                width: 50,
+                              ),
+                              radius: 50.0,
+                            )),
+                      ),
+                      SizedBox(height: 50),
+                      _formWidget1(),
+                      SizedBox(height: 20),
+                      InkWell(
+                          onTap: onSubmit,
+                          child: Common.cmbutton('Submit', 0, context)),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        alignment: Alignment.centerRight,
+                        child: Text('Forgot Password ?',
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w500)),
+                      ),
+                      Common.cmdivider(),
+                      _facebookButton(),
+                      SizedBox(height: height * .055),
+                      _createAccountLabel(),
+                    ],
+                  ),
                 ),
               ),
             ),
