@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 //Color(0xffdf8e33).withAlpha(100) 8938aa 1f0327
 class Config {
   static Color mainColor = Colors.black;
-  static Color primaryBg1 = Color(0xff310045);
-  static Color primaryBg2 = Color(0xff14001c);
+  static Color primaryBg1 = Color(0xff200033);
+  static Color primaryBg2 = Color(0xff13001f);
   static Color primaryBt1 = Color(0xff8d3aaf);
   static Color primaryBt2 = Color(0xff662182);
   static Color primaryText = Color(0xfffbf1ff);

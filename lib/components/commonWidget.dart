@@ -41,47 +41,62 @@ class Common {
     );
   }
 
-  static Widget cmbutton(String title, void callback, BuildContext context) {
+  static Widget cmbutton(String _title, int _shadow, BuildContext context) {
+    List<BoxShadow> shadowValue = [];
+    if (_shadow == 1) {
+      shadowValue.add(BoxShadow(
+          color: Colors.grey.shade200,
+          offset: Offset(2, 4),
+          blurRadius: 5,
+          spreadRadius: 2));
+    }
+
     return Container(
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.symmetric(vertical: 15),
       alignment: Alignment.center,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(5)),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-                color: Colors.grey.shade200,
-                offset: Offset(2, 4),
-                blurRadius: 5,
-                spreadRadius: 2)
-          ],
+          boxShadow: shadowValue,
           gradient: LinearGradient(
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
               colors: [Config.primaryBt1, Config.primaryBt2])),
       child: Text(
-        title,
+        _title,
         style: TextStyle(fontSize: 20, color: Colors.white),
       ),
     );
   }
 
-  static Widget cmexbutton(
-    List<ExtraChild> child,
-  ) {
+  static Widget cmexbutton(List<ExtraChild> child, int _border) {
     List<Widget> expaned = [];
+    var index = 0;
+    var boxDecor;
     for (var item in child) {
+      if (_border == 1) {
+        if (index == 0) {
+          boxDecor = BoxDecoration(
+            color: item.color,
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(5), topLeft: Radius.circular(5)),
+          );
+        } else if (index == child.length - 1) {
+          boxDecor = BoxDecoration(
+            color: item.color,
+            borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(5), topRight: Radius.circular(5)),
+          );
+        }
+      }
       expaned.add(Expanded(
         flex: item.size,
         child: Container(
-            decoration: BoxDecoration(
-              color: item.color,
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(5), topLeft: Radius.circular(5)),
-            ),
+            decoration: boxDecor,
             alignment: Alignment.center,
             child: item.child),
       ));
+      index++;
     }
 
     return Container(

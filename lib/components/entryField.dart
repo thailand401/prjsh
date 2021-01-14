@@ -18,7 +18,19 @@ class EntryField {
           SizedBox(
             height: 10,
           ),
-          TextField(obscureText: isPassword, decoration: InputDecoration())
+          TextField(
+              obscureText: isPassword,
+              decoration: InputDecoration(
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
+                border: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
+              ))
         ],
       ),
     );

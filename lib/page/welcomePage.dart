@@ -38,16 +38,30 @@ class _WelcomePage extends State<WelcomePage>
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          backgroundColor: Colors.black,
-          body: Center(
+        backgroundColor: Colors.black,
+        body: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(5)),
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                    color: Colors.grey.shade200,
+                    offset: Offset(2, 4),
+                    blurRadius: 5,
+                    spreadRadius: 2)
+              ],
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Config.primaryBg1, Config.primaryBg2])),
+          child: Center(
             child: Column(
               children: <Widget>[
                 new ClipPath(
-                  clipper: MyClipper(),
                   child: Container(
+                    height: MediaQuery.of(context).size.height,
                     decoration: BoxDecoration(
                       image: new DecorationImage(
-                        image: AssetImage('assets/resource/art.png'),
+                        image: AssetImage('assets/resource/bloom.png'),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -75,76 +89,78 @@ class _WelcomePage extends State<WelcomePage>
                                 radius: 50.0,
                               )),
                         ),
+                        DelayedAnimation(
+                          child: Text(
+                            "Hi There",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 35.0,
+                                color: color),
+                          ),
+                          delay: delayedAmount + 1000,
+                        ),
+                        DelayedAnimation(
+                          child: Text(
+                            "I'm Reflectly",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 35.0,
+                                color: color),
+                          ),
+                          delay: delayedAmount + 2000,
+                        ),
+                        SizedBox(
+                          height: 30.0,
+                        ),
+                        DelayedAnimation(
+                          child: Text(
+                            "Your New Personal",
+                            style: TextStyle(fontSize: 20.0, color: color),
+                          ),
+                          delay: delayedAmount + 3000,
+                        ),
+                        DelayedAnimation(
+                          child: Text(
+                            "Journaling  companion",
+                            style: TextStyle(fontSize: 20.0, color: color),
+                          ),
+                          delay: delayedAmount + 3500,
+                        ),
+                        SizedBox(
+                          height: 100.0,
+                        ),
+                        DelayedAnimation(
+                          child: GestureDetector(
+                            onTapDown: _onTapDown,
+                            child: Transform.scale(
+                              scale: _scale,
+                              child: _animatedButtonUI,
+                            ),
+                          ),
+                          delay: delayedAmount + 4000,
+                        ),
+                        SizedBox(
+                          height: 50.0,
+                        ),
+                        DelayedAnimation(
+                          child: Text(
+                            "I Already have An Account".toUpperCase(),
+                            style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                                color: color),
+                          ),
+                          delay: delayedAmount + 5000,
+                        ),
                       ],
                     ),
                   ),
                 ),
-                DelayedAnimation(
-                  child: Text(
-                    "Hi There",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35.0,
-                        color: color),
-                  ),
-                  delay: delayedAmount + 1000,
-                ),
-                DelayedAnimation(
-                  child: Text(
-                    "I'm Reflectly",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35.0,
-                        color: color),
-                  ),
-                  delay: delayedAmount + 2000,
-                ),
-                SizedBox(
-                  height: 30.0,
-                ),
-                DelayedAnimation(
-                  child: Text(
-                    "Your New Personal",
-                    style: TextStyle(fontSize: 20.0, color: color),
-                  ),
-                  delay: delayedAmount + 3000,
-                ),
-                DelayedAnimation(
-                  child: Text(
-                    "Journaling  companion",
-                    style: TextStyle(fontSize: 20.0, color: color),
-                  ),
-                  delay: delayedAmount + 3500,
-                ),
-                SizedBox(
-                  height: 100.0,
-                ),
-                DelayedAnimation(
-                  child: GestureDetector(
-                    onTapDown: _onTapDown,
-                    child: Transform.scale(
-                      scale: _scale,
-                      child: _animatedButtonUI,
-                    ),
-                  ),
-                  delay: delayedAmount + 4000,
-                ),
-                SizedBox(
-                  height: 50.0,
-                ),
-                DelayedAnimation(
-                  child: Text(
-                    "I Already have An Account".toUpperCase(),
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                        color: color),
-                  ),
-                  delay: delayedAmount + 5000,
-                ),
               ],
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 
@@ -157,7 +173,7 @@ class _WelcomePage extends State<WelcomePage>
         ),
         child: Center(
           child: Text(
-            'Hi Reflectly',
+            'Continue',
             style: TextStyle(
               fontSize: 20.0,
               fontWeight: FontWeight.bold,

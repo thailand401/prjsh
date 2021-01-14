@@ -39,13 +39,9 @@ class _LoginPageState extends State<LoginPage> {
                   fontWeight: FontWeight.w400)),
           color: Colors.blue[400],
           size: 5),
-      ExtraChild(
-          child: Icon(Icons.tag_faces_outlined, size: 18, color: Colors.white),
-          size: 1,
-          color: Colors.cyan)
     ];
 
-    return Common.cmexbutton(children);
+    return Common.cmexbutton(children, 1);
   }
 
   Widget _createAccountLabel() {
@@ -136,56 +132,57 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-        body: Container(
-      height: height,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(5)),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-                color: Colors.grey.shade200,
-                offset: Offset(2, 4),
-                blurRadius: 5,
-                spreadRadius: 2)
-          ],
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [Config.primaryBg1, Config.primaryBg2])),
-      child: Stack(
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  _mainHeader(),
-                  SizedBox(height: 50),
-                  _formWidget1(),
-                  SizedBox(height: 20),
-                  InkWell(
-                      onTap: onSubmit,
-                      child: Common.cmbutton('Submit', onSubmit(), context)),
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    alignment: Alignment.centerRight,
-                    child: Text('Forgot Password ?',
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w500)),
-                  ),
-                  Common.cmdivider(),
-                  _facebookButton(),
-                  SizedBox(height: height * .055),
-                  _createAccountLabel(),
-                ],
+      body: Container(
+        height: height,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                  color: Colors.grey.shade200,
+                  offset: Offset(2, 4),
+                  blurRadius: 5,
+                  spreadRadius: 2)
+            ],
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Config.primaryBg1, Config.primaryBg2])),
+        child: Stack(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    _mainHeader(),
+                    SizedBox(height: 50),
+                    _formWidget1(),
+                    SizedBox(height: 20),
+                    InkWell(
+                        onTap: onSubmit,
+                        child: Common.cmbutton('Submit', 0, context)),
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      alignment: Alignment.centerRight,
+                      child: Text('Forgot Password ?',
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w500)),
+                    ),
+                    Common.cmdivider(),
+                    _facebookButton(),
+                    SizedBox(height: height * .055),
+                    _createAccountLabel(),
+                  ],
+                ),
               ),
             ),
-          ),
-          Positioned(top: 40, left: 0, child: _backButton(context)),
-        ],
+            Positioned(top: 40, left: 0, child: _backButton(context)),
+          ],
+        ),
       ),
-    ));
+    );
   }
 
   void onSubmit() {

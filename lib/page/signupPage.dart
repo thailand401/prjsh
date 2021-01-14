@@ -18,7 +18,7 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   Widget _submitButton(BuildContext context) {
     return InkWell(
-        onTap: onSubmit, child: Common.cmbutton('Submit', onSubmit(), context));
+        onTap: onSubmit, child: Common.cmbutton('Submit', 0, context));
   }
 
   Widget _loginAccountLabel() {
