@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    Config _cf = Config();
     return MaterialApp(
       title: 'Prjsh Alpha 1.0',
       theme: ThemeData(

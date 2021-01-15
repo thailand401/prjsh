@@ -51,7 +51,11 @@ flutter:
     - assets/resource/art.png
     - assets/resource/logo.png
     - assets/resource/icon_owl.png
+    - assets/resource/icon_owl_violet.png
     - assets/resource/bloom.png
+    - assets/resource/night_mode.png
+    - assets/resource/light_mode.png
+    
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

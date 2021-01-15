@@ -9,6 +9,8 @@ class Config {
   static Color mainSubText = Color(0xff212121);
   static Color mainShadow = Colors.black38;
 
+  String primaryBgimg = 'assets/resource/night_mode.png';
+  String primaryLogo = 'assets/resource/icon_owl_violet.png';
   Color primaryBg1 = Color(0xff200033);
   Color primaryBg2 = Color(0xff13001f);
   Color primaryBt1 = Color(0xff8d3aaf);
@@ -27,6 +29,8 @@ class Config {
       this.primaryText = mainText;
       this.submaryText = mainSubText;
       this.primaryShadow = mainShadow;
+      this.primaryBgimg = 'assets/resource/light_mode.png';
+      this.primaryLogo = 'assets/resource/icon_owl.png';
       print(this.submaryText);
     }
   }

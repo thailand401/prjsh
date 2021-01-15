@@ -62,7 +62,7 @@ class _WelcomePage extends State<WelcomePage>
                     height: MediaQuery.of(context).size.height,
                     decoration: BoxDecoration(
                       image: new DecorationImage(
-                        image: AssetImage('assets/resource/bloom.png'),
+                        image: AssetImage(_cf.primaryBgimg),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -83,8 +83,7 @@ class _WelcomePage extends State<WelcomePage>
                               child: CircleAvatar(
                                 backgroundColor: Colors.grey[100],
                                 child: Image(
-                                  image: AssetImage(
-                                      'assets/resource/icon_owl.png'),
+                                  image: AssetImage(_cf.primaryLogo),
                                   width: 50,
                                 ),
                                 radius: 50.0,
